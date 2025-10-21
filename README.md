@@ -3,6 +3,7 @@ A black box fuzzer, that given a binary containing a single vulnerability and a 
 
 ## Team Members
  - Spencer Hattersley - z5416475
+ - Alexandre Cheminat - z5592322
 
 ## Fuzzer Features
 
