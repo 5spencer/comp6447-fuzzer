@@ -1,10 +1,14 @@
-# Start from a default ubuntu image.
-FROM ubuntu:22.04
+FROM --platform=linux/amd64 ubuntu:22.04
 
-# Copy/Compile my fuzzer
-COPY fuzzer /
-RUN chmod +x /fuzzer
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
 
-# Run it.
-CMD ["/bin/bash", "/fuzzer"]
+# Copy your fuzzer
+COPY fuzzer.py /fuzzer.py
+RUN chmod +x /fuzzer.py
 
+# Set the entrypoint
+ENTRYPOINT ["python3", "/fuzzer.py"]
